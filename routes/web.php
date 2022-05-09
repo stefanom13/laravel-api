@@ -29,3 +29,16 @@ Route::prefix('admin')
     Route::resource('post','PostController');
 
 });
+
+// front-office
+
+// metodo piu complesso
+
+// Route::get('{any?}',function (){
+//     return view('guest.home');
+// })->where('any','.*');
+
+// metodo alternativo fallback
+Route::fallback(function (){
+    return view('guest.home');
+});
