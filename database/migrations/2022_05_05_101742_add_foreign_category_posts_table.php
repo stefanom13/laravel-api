@@ -18,7 +18,7 @@ class AddForeignCategoryPostsTable extends Migration
             $table->unsignedBigInteger('category_id')->nullable()->after('slug')->onDelete('set null');
 
             // aggiunta e collegamento foreign-key
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
             
             // metodo abbreviato ^riga 21-> $table->foreignId('category_id')->constrained();
 
