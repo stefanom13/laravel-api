@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="">
+        <div class="container">
             <header>
                 <h1>Ultimi Post</h1>
             </header>

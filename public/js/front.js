@@ -3160,7 +3160,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card post rounded-lg border border-black" },
+    { staticClass: "card post rounded-lg border border-black overflow-hidden" },
     [
       _c("img", {
         staticClass: "w-full object-cover",
@@ -3180,14 +3180,14 @@ var render = function () {
         _vm._v(" "),
         _c(
           "ul",
-          { staticClass: "tags flex gap-4 items-center" },
+          { staticClass: "tags flex flex-wrap gap-4 items-center" },
           _vm._l(_vm.post.tags, function (tag) {
             return _c(
               "li",
               {
                 key: tag.id,
                 staticClass:
-                  "tag p-1 text-xs text-white bg-lime-600 rounded-full",
+                  "tag px-4 text-xs text-white bg-lime-600 rounded-full",
               },
               [_vm._v(" " + _vm._s(tag.name) + " ")]
             )
@@ -3293,7 +3293,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", {}, [_c("header", [_c("h1", [_vm._v("Ultimi Post")])])])
+    return _c("div", { staticClass: "container" }, [
+      _c("header", [_c("h1", [_vm._v("Ultimi Post")])]),
+    ])
   },
 ]
 render._withStripped = true
