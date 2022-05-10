@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app bg-orange-300 text-stone-800">
       <header>
         <nav>
           <ul>
@@ -9,7 +9,7 @@
           </ul>
         </nav>
       </header>
-      <PostsGrid />
+      <PostsGrid/>
       <footer>
         &copy; Boolpress 2022
       </footer>
@@ -30,6 +30,9 @@
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.app{
+  min-height: 100vh;
+}
 
 </style>
