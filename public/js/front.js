@@ -1925,6 +1925,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+// import PostsGrid from './Posts.index.vue';
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   component: {

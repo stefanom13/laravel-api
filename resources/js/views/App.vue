@@ -16,15 +16,16 @@
 
 <script>
 
-import PostsGrid from './Posts.index.vue';
+  // import PostsGrid from './Posts.index.vue';
+  import PostsGrid from './Posts.index.vue';
 
 
-export default {
-  component:{
-    PostsGrid,
+  export default {
+    component:{
+      PostsGrid,
+    }
+
   }
-
-}
 </script>
 
 <style>
