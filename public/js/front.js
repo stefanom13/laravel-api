@@ -1925,10 +1925,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 // import PostsGrid from './Posts.index.vue';
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  component: {
+  components: {
     PostsGrid: _Posts_index_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
@@ -1957,6 +1959,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1965,7 +1969,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   // creiamo metodo fetchpost (userà axios per fare la chiamata)
   methods: {
-    fetchPosts: function fetchPosts() {// Axios.get()
+    fetchPosts: function fetchPosts() {
+      var _this = this;
+
+      axios.get('/api/posts').then(function (res) {
+        // console.log(res.data.posts);
+        // destrutturazione
+        var posts = res.data.posts;
+        _this.posts = posts;
+      })["catch"](function (err) {
+        console.warn(err);
+      });
     }
   },
   mounted: function mounted() {
@@ -2467,7 +2481,7 @@ var render = function () {
       _vm._v(" "),
       _c("PostsGrid"),
       _vm._v(" "),
-      _c("footer", [_vm._v("\n      © Boolpress\n    ")]),
+      _c("footer", [_vm._v("\n      © Boolpress 2022\n    ")]),
     ],
     1
   )
@@ -2477,7 +2491,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("header", [_c("nav", [_c("ul", [_c("li", [_vm._v("ciao")])])])])
+    return _c("header", [
+      _c("nav", [
+        _c("ul", [
+          _c("li", [_vm._v("Home")]),
+          _vm._v(" "),
+          _c("li", [_vm._v("Posts")]),
+          _vm._v(" "),
+          _c("li", [_vm._v("Category")]),
+        ]),
+      ]),
+    ])
   },
 ]
 render._withStripped = true
@@ -2506,7 +2530,9 @@ var render = function () {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "container" },
+      {
+        staticClass: "container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
+      },
       _vm._l(_vm.posts, function (post) {
         return _c("div", { key: post.id }, [
           _vm._v("\n            " + _vm._s(post.title) + "\n        "),
@@ -2521,7 +2547,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("header", [_c("h1", [_vm._v("Ultimi Post")])])
+    return _c("div", {}, [_c("header", [_c("h1", [_vm._v("Ultimi Post")])])])
   },
 ]
 render._withStripped = true
@@ -14815,15 +14841,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************!*\
   !*** ./resources/js/views/Posts.index.vue ***!
   \********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Posts_index_vue_vue_type_template_id_1585f328___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Posts.index.vue?vue&type=template&id=1585f328& */ "./resources/js/views/Posts.index.vue?vue&type=template&id=1585f328&");
 /* harmony import */ var _Posts_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Posts.index.vue?vue&type=script&lang=js& */ "./resources/js/views/Posts.index.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Posts_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Posts_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -14853,7 +14878,7 @@ component.options.__file = "resources/js/views/Posts.index.vue"
 /*!*********************************************************************!*\
   !*** ./resources/js/views/Posts.index.vue?vue&type=script&lang=js& ***!
   \*********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
