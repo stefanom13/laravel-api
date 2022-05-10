@@ -1996,6 +1996,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2003,7 +2012,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      lastPage: 0,
+      currentPage: 1
     };
   },
   // creiamo metodo fetchpost (userà axios per fare la chiamata)
@@ -2011,11 +2022,22 @@ __webpack_require__.r(__webpack_exports__);
     fetchPosts: function fetchPosts() {
       var _this = this;
 
-      axios.get('/api/posts').then(function (res) {
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/api/posts', {
+        params: {
+          page: page // page: page
+
+        }
+      }).then(function (res) {
         // console.log(res.data.posts);
         // destrutturazione
         var posts = res.data.posts;
-        _this.posts = posts;
+        var data = posts.data,
+            last_page = posts.last_page,
+            current_page = posts.current_page;
+        _this.posts = data;
+        _this.lastPage = last_page;
+        _this.currentPage = current_page;
       })["catch"](function (err) {
         console.warn(err);
       });
@@ -3286,6 +3308,32 @@ var render = function () {
       }),
       1
     ),
+    _vm._v(" "),
+    _c("div", { staticClass: "container py-4 " }, [
+      _c(
+        "ul",
+        { staticClass: "paginate flex justify-center items-center gap-7" },
+        _vm._l(_vm.lastPage, function (n) {
+          return _c(
+            "li",
+            {
+              key: n,
+              class: [
+                _vm.currentPage === n ? "bg-lime-700" : " bg-rose-800",
+                "dot rounded-full cursor-pointer text-white h-10 w-10 flex justify-center items-center",
+              ],
+              on: {
+                click: function ($event) {
+                  return _vm.fetchPosts(n)
+                },
+              },
+            },
+            [_vm._v(_vm._s(n))]
+          )
+        }),
+        0
+      ),
+    ]),
   ])
 }
 var staticRenderFns = [

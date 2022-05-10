@@ -11,6 +11,15 @@
                 {{ post.title }}
             </div> -->
         </div>
+        <div class="container py-4 ">
+            <!-- paginazione -->
+            <ul class="paginate flex justify-center items-center gap-7">
+                 <li @click="fetchPosts(n)" :class="[ currentPage === n ? 'bg-lime-700' : ' bg-rose-800', 'dot rounded-full cursor-pointer text-white h-10 w-10 flex justify-center items-center']" v-for="n in lastPage" :key="n" >{{ n }}</li>
+            </ul>
+            <!-- <p>last page:{{ lastPage }}</p>
+            <p>current page:{{ currentPage }}</p> -->
+
+        </div>
     </div>
 </template>
 
@@ -24,18 +33,28 @@ export default {
     data() {
         return {
             posts: [],
+            lastPage:0,
+            currentPage:1,
         };
     },
     // creiamo metodo fetchpost (userà axios per fare la chiamata)
     methods: {
-        fetchPosts() {
-            axios.get('/api/posts')
+        fetchPosts( page = 1) {
+            axios.get('/api/posts',{
+                params:{
+                    page
+                    // page: page
+                }
+            })
             .then( res =>{
                 // console.log(res.data.posts);
 
                 // destrutturazione
                 const {posts} = res.data
-                this.posts = posts
+                const { data,last_page,current_page } = posts
+                this.posts = data
+                this.lastPage = last_page
+                this.currentPage = current_page
             })
             .catch( err => {
                 console.warn(err);
